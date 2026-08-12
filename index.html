@@ -328,6 +328,172 @@
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
   }
+
+  /* ============================================================
+     ВКЛАДКИ ВЕРХНЕГО УРОВНЯ
+     ============================================================ */
+  .toplevel-tabs{
+    display:flex; gap:22px; margin-bottom:28px;
+    border-bottom:1px solid var(--border-soft);
+  }
+  .toplevel-tab{
+    background:transparent; border:none; cursor:pointer;
+    font-family:var(--font-display); font-weight:600; font-size:14.5px;
+    color:var(--text-faint); padding:0 0 12px; position:relative;
+    transition:color .15s;
+  }
+  .toplevel-tab:hover{color:var(--text-dim);}
+  .toplevel-tab.active{color:var(--text);}
+  .toplevel-tab.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; border-radius:2px;
+    background:linear-gradient(90deg, var(--green), var(--purple));
+  }
+
+  /* ============================================================
+     КОНТЕНТ-ПЛАН / КАЛЕНДАРЬ
+     ============================================================ */
+
+  .today-summary{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-lg);
+    padding:16px 18px; margin-bottom:22px; display:flex; flex-direction:column; gap:10px;
+  }
+  .today-summary-head{
+    display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px;
+    text-transform:uppercase; letter-spacing:.08em; color:var(--text-faint);
+  }
+  .today-summary-head .dot2{width:6px;height:6px;border-radius:50%;background:var(--green); box-shadow:0 0 8px var(--green);}
+  .today-summary-list{display:flex; flex-wrap:wrap; gap:8px;}
+  .today-item{
+    display:flex; align-items:center; gap:8px; background:var(--panel-2); border:1px solid var(--border-soft);
+    border-radius:var(--radius-sm); padding:8px 12px; font-size:13px;
+  }
+  .today-item .t-badge{font-family:var(--font-mono); font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; flex-shrink:0;}
+  .today-item .t-topic{color:var(--text-dim);}
+  .today-item .t-time{font-family:var(--font-mono); font-size:11px; color:var(--text-faint);}
+  .today-empty{color:var(--text-faint); font-size:13.5px;}
+
+  .cal-toolbar{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:10px;}
+  .cal-nav{display:flex; align-items:center; gap:10px;}
+  .cal-nav-btn{
+    width:34px; height:34px; border-radius:10px; background:var(--panel); border:1px solid var(--border);
+    color:var(--text); font-size:17px; cursor:pointer; line-height:1;
+  }
+  .cal-nav-btn:hover{background:var(--panel-2);}
+  .cal-month-label{font-family:var(--font-display); font-weight:600; font-size:16px; min-width:170px; text-align:center; text-transform:capitalize;}
+  .cal-today-btn{
+    background:var(--panel); border:1px solid var(--border); color:var(--text-dim); font-family:var(--font-mono);
+    font-size:11px; padding:8px 12px; border-radius:999px; cursor:pointer;
+  }
+  .cal-today-btn:hover{color:var(--text); border-color:var(--green-line);}
+
+  .cal-upload{display:flex; gap:8px; flex-wrap:wrap;}
+  .cal-btn-ghost, .cal-btn-primary{
+    font-family:var(--font-body); font-weight:600; font-size:12.5px; padding:9px 14px; border-radius:var(--radius-sm);
+    cursor:pointer; display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+  }
+  .cal-btn-ghost{background:var(--panel); border:1px solid var(--border); color:var(--text-dim);}
+  .cal-btn-ghost:hover{color:var(--text); border-color:var(--border);}
+  .cal-btn-primary{background:linear-gradient(92deg, var(--green), var(--purple)); border:none; color:#06110c;}
+  .cal-btn-primary:hover{filter:brightness(1.08);}
+
+  .cal-hint{margin:0 0 16px; font-size:12.5px; color:var(--text-faint);}
+
+  .cal-filter{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+  .cal-filter .pill.pill-active{background:var(--panel-2); color:var(--text);}
+  .cal-filter .pill.pill-active.accent-green{border-color:var(--green-line);}
+  .cal-filter .pill.pill-active.accent-purple{border-color:var(--purple-line);}
+  .cal-filter .pill.pill-active.accent-orange{border-color:var(--orange-line);}
+
+  .cal-upload-status{
+    font-family:var(--font-mono); font-size:12px; padding:11px 14px; border-radius:var(--radius-sm);
+    margin-bottom:16px; border:1px solid var(--border-soft); background:var(--panel); color:var(--text-dim);
+    line-height:1.6;
+  }
+  .cal-upload-status.ok{color:var(--green); border-color:var(--green-line);}
+  .cal-upload-status.err{color:var(--orange); border-color:var(--orange-line);}
+
+  .cal-grid-wrap{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-lg); padding:14px;}
+  .cal-weekdays{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:6px; font-family:var(--font-mono); font-size:10.5px;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); padding:0 2px 8px;
+  }
+  .cal-weekdays span{text-align:center;}
+  .cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:6px;}
+  .cal-day{
+    background:var(--panel-2); border:1px solid var(--border-soft); border-radius:var(--radius-sm);
+    min-height:84px; padding:7px; display:flex; flex-direction:column; gap:5px; cursor:pointer; transition:.15s;
+  }
+  .cal-day:hover{border-color:var(--border); background:var(--panel-3);}
+  .cal-day.other-month{opacity:.35;}
+  .cal-day.is-today{border-color:var(--orange-line); box-shadow:0 0 0 1px var(--orange-line) inset;}
+  .cal-day.is-selected{border-color:var(--purple-line); box-shadow:0 0 0 1px var(--purple-line) inset;}
+  .cal-day-num{font-family:var(--font-mono); font-size:12px; color:var(--text-dim); font-weight:600;}
+  .cal-day.is-today .cal-day-num{color:var(--orange);}
+  .cal-day-chips{display:flex; flex-wrap:wrap; gap:3px;}
+  .cal-chip{font-family:var(--font-mono); font-size:9px; font-weight:700; padding:2px 5px; border-radius:5px; line-height:1.3;}
+  .cal-chip.accent-green{background:var(--green-soft); color:var(--green);}
+  .cal-chip.accent-purple{background:var(--purple-soft); color:var(--purple);}
+  .cal-chip.accent-orange{background:var(--orange-soft); color:var(--orange);}
+  .cal-chip-more{font-family:var(--font-mono); font-size:9px; color:var(--text-faint); align-self:center;}
+
+  @media (max-width:640px){
+    .cal-day{min-height:52px; padding:6px;}
+    .cal-day-chips{display:none;}
+    .cal-day.has-posts{position:relative;}
+    .cal-day.has-posts::after{
+      content:''; width:5px; height:5px; border-radius:50%; background:var(--purple);
+      position:absolute; bottom:6px; right:6px;
+    }
+    .cal-month-label{min-width:auto; font-size:14px;}
+  }
+
+  .cal-day-detail{
+    margin-top:16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px 18px;
+  }
+  .cal-day-detail-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;}
+  .cal-day-detail-header h3{margin:0; font-family:var(--font-display); font-size:16px; text-transform:capitalize;}
+  .cal-close-btn{
+    background:transparent; border:none; color:var(--text-faint); font-size:15px; cursor:pointer;
+    width:26px; height:26px; border-radius:50%;
+  }
+  .cal-close-btn:hover{background:var(--panel-3); color:var(--text);}
+  .cal-day-detail-list{display:flex; flex-direction:column; gap:8px;}
+  .cal-day-detail-item{
+    display:flex; gap:10px; align-items:flex-start; background:var(--panel-2); border:1px solid var(--border-soft);
+    border-radius:var(--radius-sm); padding:10px 12px;
+  }
+  .cal-day-detail-item .ddi-body{flex:1; min-width:0;}
+  .cal-day-detail-item .ddi-topic{font-size:13.5px; color:var(--text); font-weight:600;}
+  .cal-day-detail-item .ddi-meta{font-family:var(--font-mono); font-size:11px; color:var(--text-faint); margin-top:3px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .status-tag{font-family:var(--font-mono); font-size:9.5px; padding:2px 7px; border-radius:999px; text-transform:uppercase;}
+  .status-tag.plan{background:var(--panel-3); color:var(--text-faint);}
+  .status-tag.ready{background:var(--purple-soft); color:var(--purple);}
+  .status-tag.published{background:var(--green-soft); color:var(--green);}
+
+  .cal-format-doc{
+    margin-top:26px; background:var(--panel); border:1px solid var(--border-soft); border-radius:var(--radius-lg);
+    padding:18px 20px; font-size:13.5px; color:var(--text-dim); line-height:1.6;
+  }
+  .cal-format-doc h3{margin:0 0 10px; font-family:var(--font-display); font-size:15px; color:var(--text);}
+  .cal-format-doc code{
+    font-family:var(--font-mono); font-size:12px; background:var(--panel-3); padding:1px 6px; border-radius:5px; color:var(--purple);
+  }
+  .cal-format-codes{font-family:var(--font-mono); font-size:12px;}
+  .cal-format-table{margin:14px 0; border:1px solid var(--border-soft); border-radius:var(--radius-sm); overflow:hidden;}
+  .cft-row{
+    display:grid; grid-template-columns:110px 90px 1fr 1.4fr; gap:10px; padding:9px 12px;
+    font-size:12.5px; border-bottom:1px solid var(--border-soft);
+  }
+  .cft-row:last-child{border-bottom:none;}
+  .cft-row.cft-head{
+    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--text-faint); background:var(--panel-2);
+  }
+  .cft-row span:first-child{font-family:var(--font-mono); color:var(--text);}
+  @media (max-width:640px){
+    .cft-row{grid-template-columns:1fr 1fr; row-gap:2px;}
+    .cft-row span:nth-child(3), .cft-row span:nth-child(4){grid-column:1 / -1; color:var(--text-faint);}
+  }
 </style>
 </head>
 <body>
@@ -346,21 +512,89 @@
     <div class="readouts" id="readouts"><!-- заполняется скриптом --></div>
   </header>
 
-  <div class="search-row">
-    <div class="search-box" id="searchBox">
-      <input type="text" id="searchInput" placeholder="Искать по всем мануалам… например «shadowban» или «аватар»" autocomplete="off">
-      <button class="clear-btn" id="clearSearch" aria-label="Очистить поиск">✕</button>
-    </div>
-    <div class="search-meta" id="searchMeta"></div>
+  <div class="toplevel-tabs" id="toplevelTabs">
+    <button class="toplevel-tab active" data-view="manuals" type="button">🗂 Мануалы</button>
+    <button class="toplevel-tab" data-view="calendar" type="button">📅 Контент-план</button>
   </div>
 
-  <nav class="quicknav" id="quicknav"><!-- заполняется скриптом --></nav>
+  <div id="manualsView">
 
-  <main class="board" id="board"><!-- заполняется скриптом --></main>
+    <div class="search-row">
+      <div class="search-box" id="searchBox">
+        <input type="text" id="searchInput" placeholder="Искать по всем мануалам… например «shadowban» или «аватар»" autocomplete="off">
+        <button class="clear-btn" id="clearSearch" aria-label="Очистить поиск">✕</button>
+      </div>
+      <div class="search-meta" id="searchMeta"></div>
+    </div>
 
-  <div class="empty-state" id="emptyState" style="display:none;">
-    <strong>Ничего не найдено</strong>
-    Попробуйте другой запрос или очистите поиск.
+    <nav class="quicknav" id="quicknav"><!-- заполняется скриптом --></nav>
+
+    <main class="board" id="board"><!-- заполняется скриптом --></main>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <strong>Ничего не найдено</strong>
+      Попробуйте другой запрос или очистите поиск.
+    </div>
+
+  </div>
+
+  <div id="calendarView" style="display:none;">
+
+    <div class="today-summary" id="todaySummary"><!-- заполняется скриптом --></div>
+
+    <div class="cal-toolbar">
+      <div class="cal-nav">
+        <button id="calPrev" class="cal-nav-btn" type="button" aria-label="Предыдущий месяц">‹</button>
+        <div class="cal-month-label" id="calMonthLabel"></div>
+        <button id="calNext" class="cal-nav-btn" type="button" aria-label="Следующий месяц">›</button>
+        <button id="calToday" class="cal-today-btn" type="button">Сегодня</button>
+      </div>
+      <div class="cal-upload">
+        <button id="calTemplateBtn" class="cal-btn-ghost" type="button">⭳ Шаблон CSV</button>
+        <label class="cal-btn-primary" id="calUploadLabel">
+          ⭱ Загрузить контент-план
+          <input type="file" id="calFileInput" accept=".csv" hidden>
+        </label>
+      </div>
+    </div>
+
+    <p class="cal-hint">Формат файла и технические требования — под календарём, в разделе «Как устроен формат загрузки».</p>
+
+    <nav class="cal-filter" id="calFilter"><!-- заполняется скриптом --></nav>
+
+    <div id="calUploadStatus" class="cal-upload-status" style="display:none;"></div>
+
+    <div class="cal-grid-wrap">
+      <div class="cal-weekdays">
+        <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+      </div>
+      <div class="cal-grid" id="calGrid"><!-- заполняется скриптом --></div>
+    </div>
+
+    <div class="cal-day-detail" id="calDayDetail" style="display:none;">
+      <div class="cal-day-detail-header">
+        <h3 id="calDayDetailTitle"></h3>
+        <button class="cal-close-btn" id="calDayDetailClose" type="button" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="cal-day-detail-list" id="calDayDetailBody"></div>
+    </div>
+
+    <div class="cal-format-doc">
+      <h3>📋 Как устроен формат загрузки</h3>
+      <p>Загружается CSV-файл (UTF-8, разделитель — запятая) с заголовком в первой строке. При загрузке новый файл <strong>полностью заменяет</strong> текущий контент-план в календаре.</p>
+      <div class="cal-format-table">
+        <div class="cft-row cft-head"><span>Колонка</span><span>Обязательна</span><span>Формат</span><span>Пример</span></div>
+        <div class="cft-row"><span>date</span><span>да</span><span>ГГГГ-ММ-ДД</span><span>2026-08-20</span></div>
+        <div class="cft-row"><span>platform</span><span>да</span><span>код канала</span><span>IG, TG, YT, X…</span></div>
+        <div class="cft-row"><span>topic</span><span>да</span><span>текст</span><span>Пост про риск-менеджмент</span></div>
+        <div class="cft-row"><span>format</span><span>нет</span><span>текст</span><span>Reels, Тред, Email</span></div>
+        <div class="cft-row"><span>time</span><span>нет</span><span>ЧЧ:ММ</span><span>10:00</span></div>
+        <div class="cft-row"><span>status</span><span>нет</span><span>plan / ready / published</span><span>plan</span></div>
+      </div>
+      <p class="cal-format-codes">Коды платформ: <span id="calCodeList"></span></p>
+      <p>Чтобы контент-план был виден всей команде на сайте (а не только в вашем браузере), сохраните файл под именем <code>content-plan.csv</code> и загрузите его в корень репозитория на GitHub — тем же способом, что и обновление <code>index.html</code>. Страница подтягивает его автоматически при открытии.</p>
+    </div>
+
   </div>
 
   <footer>
@@ -921,6 +1155,360 @@ function runSearch(){
 searchInput.addEventListener('input', runSearch);
 clearBtn.addEventListener('click', () => { searchInput.value = ''; runSearch(); searchInput.focus(); });
 
+/* ============================================================================
+   КОНТЕНТ-ПЛАН / КАЛЕНДАРЬ
+   ----------------------------------------------------------------------------
+   Формат одной записи контент-плана:
+   { date:'ГГГГ-ММ-ДД', platform:'КОД', topic:'тема', format:'формат',
+     time:'ЧЧ:ММ', status:'plan'|'ready'|'published' }
+
+   Источники данных (в порядке приоритета):
+   1. content-plan.csv рядом с index.html в репозитории — подтягивается
+      автоматически через fetch() при открытии сайта (видно всей команде).
+   2. Локальный кэш браузера (localStorage) — то, что человек загружал
+      вручную в этом браузере ранее.
+   3. Демо-набор ниже — просто чтобы календарь не выглядел пустым при
+      первом знакомстве с дашбордом. Реальные данные его полностью заменяют.
+   ============================================================================ */
+
+const PLATFORM_BY_CODE = {};
+DATA.forEach(p => { PLATFORM_BY_CODE[p.code] = p; });
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+function toISODate(d){ return d.getFullYear() + '-' + pad2(d.getMonth()+1) + '-' + pad2(d.getDate()); }
+function addDays(d, n){ const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+
+const _today0 = new Date();
+const DEMO_SEED = [
+  {date:toISODate(_today0), platform:'IG', topic:'Демо: карусель «3 мифа о трейдинге»', format:'Карусель', time:'11:00', status:'ready'},
+  {date:toISODate(_today0), platform:'TG', topic:'Демо: анонс еженедельного турнира', format:'Пост', time:'09:00', status:'published'},
+  {date:toISODate(addDays(_today0,1)), platform:'YT', topic:'Демо: обзор обновлений платформы', format:'Видео', time:'17:00', status:'plan'},
+  {date:toISODate(addDays(_today0,2)), platform:'X', topic:'Демо: тред про риск-менеджмент', format:'Тред', time:'14:00', status:'plan'},
+  {date:toISODate(addDays(_today0,-2)), platform:'WA', topic:'Демо: рассылка о новом функционале', format:'Broadcast', time:'12:00', status:'published'},
+  {date:toISODate(addDays(_today0,4)), platform:'SB', topic:'Демо: урок 6 — управление рисками', format:'Письмо', time:'08:00', status:'plan'},
+  {date:toISODate(addDays(_today0,-5)), platform:'TP', topic:'Демо: сбор отзывов после турнира', format:'Аутрич', time:'10:00', status:'published'},
+  {date:toISODate(addDays(_today0,6)), platform:'IG', topic:'Демо: Reels с разбором сделки', format:'Reels', time:'19:00', status:'plan'},
+  {date:toISODate(addDays(_today0,-1)), platform:'RD', topic:'Демо: AMA-сессия с командой', format:'AMA', time:'16:00', status:'published'},
+];
+
+let CONTENT_PLAN = DEMO_SEED.slice();
+let usingDemoData = true;
+
+const calState = {
+  cursor: new Date(_today0.getFullYear(), _today0.getMonth(), 1),
+  filters: new Set(),   // пусто = показываем все платформы
+  selectedDate: null,
+};
+
+/* ---------- CSV: парсинг и валидация ---------- */
+
+function parseCSV(text){
+  const rows = [];
+  let i = 0, field = '', row = [], inQuotes = false;
+  text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  while(i < text.length){
+    const c = text[i];
+    if(inQuotes){
+      if(c === '"'){
+        if(text[i+1] === '"'){ field += '"'; i += 2; continue; }
+        inQuotes = false; i++; continue;
+      }
+      field += c; i++; continue;
+    } else {
+      if(c === '"'){ inQuotes = true; i++; continue; }
+      if(c === ','){ row.push(field); field = ''; i++; continue; }
+      if(c === '\n'){ row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
+      field += c; i++; continue;
+    }
+  }
+  if(field.length || row.length){ row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(cell => cell.trim() !== ''));
+}
+
+function csvRowsToItems(rows){
+  const errors = [];
+  if(!rows.length) return {items:[], errors:['Файл пустой.']};
+  const header = rows[0].map(h => h.trim().toLowerCase());
+  const items = [];
+  for(let r = 1; r < rows.length; r++){
+    const arr = rows[r];
+    const obj = {};
+    header.forEach((h, idx) => { obj[h] = (arr[idx] || '').trim(); });
+    const lineNo = r + 1;
+
+    if(!obj.date || !/^\d{4}-\d{2}-\d{2}$/.test(obj.date)){
+      errors.push(`строка ${lineNo}: некорректная дата «${obj.date || '—'}» (нужен формат ГГГГ-ММ-ДД)`);
+      continue;
+    }
+    const code = (obj.platform || '').toUpperCase();
+    if(!PLATFORM_BY_CODE[code]){
+      errors.push(`строка ${lineNo}: неизвестный код платформы «${obj.platform || '—'}»`);
+      continue;
+    }
+    if(!obj.topic){
+      errors.push(`строка ${lineNo}: не указана тема поста (topic)`);
+      continue;
+    }
+    const status = ['plan','ready','published'].includes(obj.status) ? obj.status : 'plan';
+    items.push({date:obj.date, platform:code, topic:obj.topic, format:obj.format || '', time:obj.time || '', status});
+  }
+  return {items, errors};
+}
+
+/* ---------- рендер ---------- */
+
+const todaySummaryEl = document.getElementById('todaySummary');
+const calMonthLabel = document.getElementById('calMonthLabel');
+const calGrid = document.getElementById('calGrid');
+const calFilterEl = document.getElementById('calFilter');
+const calDayDetail = document.getElementById('calDayDetail');
+const calDayDetailTitle = document.getElementById('calDayDetailTitle');
+const calDayDetailBody = document.getElementById('calDayDetailBody');
+const calUploadStatus = document.getElementById('calUploadStatus');
+
+function itemsForDate(dateStr, respectFilter){
+  return CONTENT_PLAN
+    .filter(it => it.date === dateStr)
+    .filter(it => !respectFilter || calState.filters.size === 0 || calState.filters.has(it.platform))
+    .sort((a,b) => (a.time || '99:99').localeCompare(b.time || '99:99'));
+}
+
+function statusLabel(s){ return {plan:'план', ready:'готово', published:'опубликовано'}[s] || s; }
+
+function renderTodaySummary(){
+  const todayStr = toISODate(new Date());
+  const items = itemsForDate(todayStr, false);
+  const listHTML = items.length
+    ? items.map(it => {
+        const p = PLATFORM_BY_CODE[it.platform];
+        return `<div class="today-item">
+          <span class="t-badge accent-${p ? p.accent : 'green'}" style="background:var(--${p ? p.accent : 'green'}-soft); color:var(--${p ? p.accent : 'green'});">${esc(it.platform)}</span>
+          <span class="t-topic">${esc(it.topic)}</span>
+          ${it.time ? `<span class="t-time">${esc(it.time)}</span>` : ''}
+        </div>`;
+      }).join('')
+    : `<span class="today-empty">На сегодня в контент-плане пока ничего не запланировано.</span>`;
+
+  todaySummaryEl.innerHTML = `
+    <div class="today-summary-head"><span class="dot2"></span> Сегодня, ${new Date().toLocaleDateString('ru-RU',{day:'numeric', month:'long'})}</div>
+    <div class="today-summary-list">${listHTML}</div>
+  `;
+}
+
+function renderCalFilter(){
+  const allPill = `<button class="pill ${calState.filters.size === 0 ? 'pill-active' : ''}" data-filter="__all__" type="button">Все каналы</button>`;
+  const platPills = DATA.map(p => `
+    <button class="pill accent-${p.accent} ${calState.filters.has(p.code) ? 'pill-active' : ''}" data-filter="${p.code}" type="button">
+      <span class="badge-mini">${esc(p.code)}</span> ${esc(p.name)}
+    </button>
+  `).join('');
+  calFilterEl.innerHTML = allPill + platPills;
+
+  calFilterEl.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-filter');
+      if(key === '__all__'){ calState.filters.clear(); }
+      else if(calState.filters.has(key)){ calState.filters.delete(key); }
+      else { calState.filters.add(key); }
+      renderCalFilter();
+      renderCalGrid();
+      if(calState.selectedDate) renderDayDetail(calState.selectedDate);
+    });
+  });
+}
+
+function renderCalGrid(){
+  const year = calState.cursor.getFullYear();
+  const month = calState.cursor.getMonth();
+  calMonthLabel.textContent = calState.cursor.toLocaleDateString('ru-RU', {month:'long', year:'numeric'});
+
+  const firstOfMonth = new Date(year, month, 1);
+  let startWeekday = firstOfMonth.getDay(); // 0=вс
+  startWeekday = startWeekday === 0 ? 6 : startWeekday - 1; // делаем понедельник первым
+
+  const gridStart = addDays(firstOfMonth, -startWeekday);
+  const todayStr = toISODate(new Date());
+
+  let cellsHTML = '';
+  for(let i = 0; i < 42; i++){
+    const cellDate = addDays(gridStart, i);
+    const cellStr = toISODate(cellDate);
+    const inMonth = cellDate.getMonth() === month;
+    if(i >= 35 && cellDate.getMonth() !== month && i % 7 === 0) break; // не рисуем лишнюю 6-ю строку, если она вся вне месяца
+
+    const items = itemsForDate(cellStr, true);
+    const chips = items.slice(0, 4).map(it => {
+      const p = PLATFORM_BY_CODE[it.platform];
+      return `<span class="cal-chip accent-${p ? p.accent : 'green'}">${esc(it.platform)}</span>`;
+    }).join('');
+    const more = items.length > 4 ? `<span class="cal-chip-more">+${items.length - 4}</span>` : '';
+
+    const classes = ['cal-day'];
+    if(!inMonth) classes.push('other-month');
+    if(cellStr === todayStr) classes.push('is-today');
+    if(cellStr === calState.selectedDate) classes.push('is-selected');
+    if(items.length) classes.push('has-posts');
+
+    cellsHTML += `
+      <div class="${classes.join(' ')}" data-date="${cellStr}">
+        <span class="cal-day-num">${cellDate.getDate()}</span>
+        <div class="cal-day-chips">${chips}${more}</div>
+      </div>
+    `;
+  }
+
+  calGrid.innerHTML = cellsHTML;
+  calGrid.querySelectorAll('.cal-day').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const dateStr = cell.getAttribute('data-date');
+      calState.selectedDate = dateStr;
+      renderCalGrid();
+      renderDayDetail(dateStr);
+    });
+  });
+}
+
+function renderDayDetail(dateStr){
+  const items = itemsForDate(dateStr, true);
+  const d = new Date(dateStr + 'T00:00:00');
+  calDayDetailTitle.textContent = d.toLocaleDateString('ru-RU', {weekday:'long', day:'numeric', month:'long'});
+
+  calDayDetailBody.innerHTML = items.length
+    ? items.map(it => {
+        const p = PLATFORM_BY_CODE[it.platform];
+        return `
+        <div class="cal-day-detail-item">
+          <span class="badge-mini accent-${p ? p.accent : 'green'}" style="background:var(--${p ? p.accent : 'green'}-soft); color:var(--${p ? p.accent : 'green'}); width:30px;height:30px;border-radius:8px;">${esc(it.platform)}</span>
+          <div class="ddi-body">
+            <div class="ddi-topic">${esc(it.topic)}</div>
+            <div class="ddi-meta">
+              ${p ? esc(p.name) : esc(it.platform)}
+              ${it.format ? '· ' + esc(it.format) : ''}
+              ${it.time ? '· ' + esc(it.time) : ''}
+              <span class="status-tag ${esc(it.status)}">${statusLabel(it.status)}</span>
+            </div>
+          </div>
+        </div>`;
+      }).join('')
+    : `<span class="today-empty">На эту дату записей нет.</span>`;
+
+  calDayDetail.style.display = 'block';
+}
+
+function refreshCalendarAll(){
+  renderTodaySummary();
+  renderCalFilter();
+  renderCalGrid();
+  if(calState.selectedDate) renderDayDetail(calState.selectedDate);
+}
+
+/* ---------- навигация по месяцам ---------- */
+
+document.getElementById('calPrev').addEventListener('click', () => {
+  calState.cursor = new Date(calState.cursor.getFullYear(), calState.cursor.getMonth() - 1, 1);
+  renderCalGrid();
+});
+document.getElementById('calNext').addEventListener('click', () => {
+  calState.cursor = new Date(calState.cursor.getFullYear(), calState.cursor.getMonth() + 1, 1);
+  renderCalGrid();
+});
+document.getElementById('calToday').addEventListener('click', () => {
+  const now = new Date();
+  calState.cursor = new Date(now.getFullYear(), now.getMonth(), 1);
+  calState.selectedDate = toISODate(now);
+  renderCalGrid();
+  renderDayDetail(calState.selectedDate);
+});
+document.getElementById('calDayDetailClose').addEventListener('click', () => {
+  calState.selectedDate = null;
+  calDayDetail.style.display = 'none';
+  renderCalGrid();
+});
+
+/* ---------- загрузка CSV пользователем ---------- */
+
+document.getElementById('calFileInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const {items, errors} = csvRowsToItems(parseCSV(String(reader.result)));
+    calUploadStatus.style.display = 'block';
+    if(items.length){
+      CONTENT_PLAN = items;
+      usingDemoData = false;
+      try{ localStorage.setItem('mediagods_content_plan', JSON.stringify(items)); } catch(err){}
+      calState.selectedDate = null;
+      calDayDetail.style.display = 'none';
+      refreshCalendarAll();
+      calUploadStatus.className = 'cal-upload-status ' + (errors.length ? 'err' : 'ok');
+      calUploadStatus.textContent = `Загружено записей: ${items.length}.` + (errors.length ? ` Пропущено с ошибками: ${errors.length} — ${errors.slice(0,3).join('; ')}${errors.length>3 ? '…' : ''}` : ' Файл обработан без ошибок.') + ' Чтобы это увидела вся команда на сайте — загрузите тот же CSV как content-plan.csv в репозиторий на GitHub.';
+    } else {
+      calUploadStatus.className = 'cal-upload-status err';
+      calUploadStatus.textContent = `Не удалось прочитать ни одной записи. ${errors.slice(0,5).join('; ')}`;
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+  e.target.value = '';
+});
+
+document.getElementById('calTemplateBtn').addEventListener('click', () => {
+  const template = 'date,platform,topic,format,time,status\n'
+    + '2026-08-20,IG,Пример: пост про риск-менеджмент,Карусель,10:00,plan\n'
+    + '2026-08-21,TG,Пример: анонс турнира,Пост,09:30,ready\n'
+    + '2026-08-22,YT,Пример: обзор платформы,Видео,18:00,plan\n';
+  const blob = new Blob(['\uFEFF' + template], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'content-plan-template.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('calCodeList').textContent = DATA.map(p => `${p.code} (${p.name})`).join(', ');
+
+/* ---------- попытка подтянуть общий content-plan.csv, иначе кэш браузера ---------- */
+
+fetch('content-plan.csv')
+  .then(r => { if(!r.ok) throw new Error('no file'); return r.text(); })
+  .then(text => {
+    const {items} = csvRowsToItems(parseCSV(text));
+    if(items.length){
+      CONTENT_PLAN = items;
+      usingDemoData = false;
+      try{ localStorage.setItem('mediagods_content_plan', JSON.stringify(items)); } catch(err){}
+      refreshCalendarAll();
+    }
+  })
+  .catch(() => {
+    try{
+      const cached = localStorage.getItem('mediagods_content_plan');
+      if(cached){
+        const parsed = JSON.parse(cached);
+        if(Array.isArray(parsed) && parsed.length){
+          CONTENT_PLAN = parsed;
+          usingDemoData = false;
+          refreshCalendarAll();
+        }
+      }
+    } catch(err){}
+  });
+
+/* ---------------- переключение вкладок верхнего уровня ---------------- */
+
+const manualsView = document.getElementById('manualsView');
+const calendarView = document.getElementById('calendarView');
+
+document.getElementById('toplevelTabs').querySelectorAll('.toplevel-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.toplevel-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const view = tab.getAttribute('data-view');
+    manualsView.style.display = view === 'manuals' ? '' : 'none';
+    calendarView.style.display = view === 'calendar' ? '' : 'none';
+  });
+});
+
 /* ---------------- init ---------------- */
 
 renderReadouts();
@@ -932,6 +1520,8 @@ attachHandlers();
 if(DATA[0]){
   setPlatformOpen(document.getElementById(DATA[0].id), true);
 }
+
+refreshCalendarAll();
 
 document.getElementById('updatedAt').textContent = 'обновлено: ' + new Date().toLocaleDateString('ru-RU');
 </script>
